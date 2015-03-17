@@ -1,0 +1,36 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: SNMPTT
+scopeName: text.snmptt
+fileTypes: [conf]
+uuid: a3ed19da-c4c2-4877-9c6b-afb922379b14
+
+patterns:
+
+- match: ^(EVENT|FORMAT|REGEX|SDESC|EDESC|EXEC|MATCH|)
+  name: support.function
+
+- begin: (?<=SDESC)(.*)
+  end: (.*)(?=EDESC)
+  name: comment.line
+
+- match: (?<=EVENT )([A-Z]|[a-z]|[0-9])+
+  name: variable.parameter
+
+- match: \.1\.(1|2|3\.6\.1)(\.\d*)*
+  name: constant.numeric
+
+- match: \$([A-Z]|[a-z]|[0-9]|\*)([A-Z]|[a-z]|[0-9])?
+  name: variable.other
+
+- match: (\\.|\||\^|\$|\\)
+  name: string.regexp
+
+- match: \".*\"
+  name: string.quoted.double
+
+- match: ^[\s]*#(.*)
+  name:  comment.line
+...
+
+# (\n|.*)*?(.*)(\n<=EDESC)

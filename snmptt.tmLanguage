@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>conf</string>
+	</array>
+	<key>name</key>
+	<string>SNMPTT</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>match</key>
+			<string>^(EVENT|FORMAT|REGEX|SDESC|EDESC|EXEC|MATCH|)</string>
+			<key>name</key>
+			<string>support.function</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=SDESC)(.*)</string>
+			<key>end</key>
+			<string>(.*)(?=EDESC)</string>
+			<key>name</key>
+			<string>comment.line</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;=EVENT )([A-Z]|[a-z]|[0-9])+</string>
+			<key>name</key>
+			<string>variable.parameter</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\.1\.(1|2|3\.6\.1)(\.\d*)*</string>
+			<key>name</key>
+			<string>constant.numeric</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\$([A-Z]|[a-z]|[0-9]|\*)([A-Z]|[a-z]|[0-9])?</string>
+			<key>name</key>
+			<string>variable.other</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(\\.|\||\^|\$|\\)</string>
+			<key>name</key>
+			<string>string.regexp</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\".*\"</string>
+			<key>name</key>
+			<string>string.quoted.double</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^[\s]*#(.*)</string>
+			<key>name</key>
+			<string>comment.line</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>text.snmptt</string>
+	<key>uuid</key>
+	<string>a3ed19da-c4c2-4877-9c6b-afb922379b14</string>
+</dict>
+</plist>
