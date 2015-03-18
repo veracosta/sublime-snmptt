@@ -12,15 +12,21 @@
 	<array>
 		<dict>
 			<key>match</key>
-			<string>^(EVENT|FORMAT|REGEX|SDESC|EDESC|EXEC|MATCH|)</string>
+			<string>^(EVENT|FORMAT|REGEX|SDESC|EDESC|EXEC|MATCH|PREEXEC)</string>
 			<key>name</key>
 			<string>support.function</string>
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=SDESC)(.*)</string>
+			<string>SDESC</string>
 			<key>end</key>
-			<string>(.*)(?=EDESC)</string>
+			<string>EDESC</string>
+			<key>name</key>
+			<string>comment.line</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^[\s]*#(.*)</string>
 			<key>name</key>
 			<string>comment.line</string>
 		</dict>
@@ -38,27 +44,15 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\$([A-Z]|[a-z]|[0-9]|\*)([A-Z]|[a-z]|[0-9])?</string>
+			<string>\$(A|aA|Be|Bu|BE|Bn|c|C|D|E|e|Fa|Ff|Fn|Fr|Ft|Fz|G|H|S|N|i|O|o|R|r|aR|ar|s|T|X|x|#|\$|@|\d+|\+\d+|-\d+|v\d+|\*|\+\*|-\*)?</string>
 			<key>name</key>
 			<string>variable.other</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>(\\.|\||\^|\$|\\)</string>
-			<key>name</key>
-			<string>string.regexp</string>
 		</dict>
 		<dict>
 			<key>match</key>
 			<string>\".*\"</string>
 			<key>name</key>
 			<string>string.quoted.double</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>^[\s]*#(.*)</string>
-			<key>name</key>
-			<string>comment.line</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
