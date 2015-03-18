@@ -7,12 +7,15 @@ uuid: a3ed19da-c4c2-4877-9c6b-afb922379b14
 
 patterns:
 
-- match: ^(EVENT|FORMAT|REGEX|SDESC|EDESC|EXEC|MATCH|)
+- match: ^(EVENT|FORMAT|REGEX|SDESC|EDESC|EXEC|MATCH|PREEXEC)
   name: support.function
 
-- begin: (?<=SDESC)(.*)
-  end: (.*)(?=EDESC)
+- begin: SDESC
+  end: EDESC
   name: comment.line
+
+- match: ^[\s]*#(.*)
+  name:  comment.line
 
 - match: (?<=EVENT )([A-Z]|[a-z]|[0-9])+
   name: variable.parameter
@@ -20,17 +23,12 @@ patterns:
 - match: \.1\.(1|2|3\.6\.1)(\.\d*)*
   name: constant.numeric
 
-- match: \$([A-Z]|[a-z]|[0-9]|\*)([A-Z]|[a-z]|[0-9])?
+- match: \$(A|aA|Be|Bu|BE|Bn|c|C|D|E|e|Fa|Ff|Fn|Fr|Ft|Fz|G|H|S|N|i|O|o|R|r|aR|ar|s|T|X|x|#|\$|@|\d+|\+\d+|-\d+|v\d+|\*|\+\*|-\*)?
   name: variable.other
 
-- match: (\\.|\||\^|\$|\\)
-  name: string.regexp
+# - match: (\\.|\||\^|\$|\\)
+#   name: string.regexp
 
 - match: \".*\"
   name: string.quoted.double
-
-- match: ^[\s]*#(.*)
-  name:  comment.line
 ...
-
-# (\n|.*)*?(.*)(\n<=EDESC)
