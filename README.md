@@ -1,10 +1,6 @@
 # sublime-snmptt
 SNMPTT syntax and a snippet for Sublime Text.
 
-
-# sublime-alliedwareplus-syntax
-====
-
 sublime-snmptt contains syntax definition and a snippet for SNMPTT configuration file.
 
 ## Install
